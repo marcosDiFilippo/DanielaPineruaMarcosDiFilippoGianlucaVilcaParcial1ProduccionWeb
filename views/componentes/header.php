@@ -9,7 +9,7 @@ session_start();
   </div>
 
   <nav>
-     <a href="./dashboard.php">Inicio</a>
+     <a href="./inicio.php">Inicio</a>
     <a href="./vehiculos.php">Vehículos</a>
 
     <?php if (isset($_SESSION['usuario_id'])): ?>
