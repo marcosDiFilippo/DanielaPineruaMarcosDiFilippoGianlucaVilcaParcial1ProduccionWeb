@@ -1,6 +1,6 @@
 <?php
     session_start();
-    require_once 'BD.php';
+    require_once '../../src/clases/BD.php';
 
     $email = $_POST['email'];
     $password = $_POST['password'];
@@ -12,13 +12,13 @@
 
     $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if ($usuario && password_verify($password, $usuario['password'])) {
+    if ($usuario && hash_equals($usuario['password'], md5($password))) {
 
         $_SESSION['usuario_id'] = $usuario['id'];
         $_SESSION['rol'] = $usuario['rol'];
         $_SESSION['nombre'] = $usuario['nombre'];
 
-        header("Location: dashboard.php");
+        header("Location: ../../views/dashboard.php");
         exit;
 
     } else {
