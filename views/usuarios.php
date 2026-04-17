@@ -9,7 +9,7 @@ if (!isset($_SESSION['usuario_id']) || $_SESSION['rol'] !== 'admin') {
 
 <h2>Crear usuario</h2>
 
-<form method="POST" action="guardar_usuario.php">
+<form method="POST" action="../action/CRUD_Usuarios/guardar_usuario.php">
     <input type="text" name="nombre" placeholder="Nombre" required>
     <input type="email" name="email" placeholder="Email" required>
     <input type="password" name="password" placeholder="Contraseña" required>
