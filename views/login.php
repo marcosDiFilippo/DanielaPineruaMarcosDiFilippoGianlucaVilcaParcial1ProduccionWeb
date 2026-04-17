@@ -9,8 +9,7 @@
 </head>
 <body>
     <?php
-        include_once('./componentes/header.php');
-    ?>
+    include_once('componentes/header.php');    ?>
     <main>
         <section>
 
@@ -23,5 +22,8 @@
             </form>
         </section>
     </main>
+    <?php
+        include_once('componentes/footer.php');
+    ?>
 </body>
 </html>

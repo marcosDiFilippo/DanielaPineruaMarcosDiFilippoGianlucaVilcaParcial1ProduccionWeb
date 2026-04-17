@@ -12,6 +12,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel</title>
+
+    <link rel="stylesheet" href="assets/css/styles.css">
+
 </head>
 <body>
     <?php
@@ -24,7 +27,7 @@
             <a href="vehiculos.php">Ver vehículos</a><br>
 
             <?php if ($_SESSION['rol'] === 'admin'): ?>
-                <a href="usuarios.php">Gestionar usuarios</a><br>
+                <a href="gestion_usuarios.php">Gestionar usuarios</a><br>
             <?php endif; ?>
 
             <a href="../action/sesion/cerrar_sesion.php">Cerrar sesión</a>

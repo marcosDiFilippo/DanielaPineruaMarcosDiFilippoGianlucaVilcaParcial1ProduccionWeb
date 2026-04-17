@@ -1,13 +1,15 @@
+
 <?php
 session_start();
 ?>
 
 <header>
   <div>
-    <a href="../dashboard.php">Panel</a>
+    <h1>Agencia Da-Vinci</h1>
   </div>
 
   <nav>
+     <a href="../dashboard.php">Inicio</a>
     <a href="../vehiculos.php">Vehículos</a>
 
     <?php if (isset($_SESSION['usuario_id'])): ?>
@@ -21,5 +23,6 @@ session_start();
     <?php else: ?>
         <a href="../login.php">Iniciar sesión</a>
     <?php endif; ?>
+
   </nav>
 </header>
