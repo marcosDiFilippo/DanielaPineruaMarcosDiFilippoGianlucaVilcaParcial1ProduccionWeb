@@ -10,6 +10,7 @@ class Vehiculo {
     private string $imagen;
     private int $usuario_id;
     private string $transmision;
+    private static int $contador = 0;
 
     public function __construct(
         string $marca,
@@ -31,5 +32,11 @@ class Vehiculo {
         $this->imagen = $imagen;
         $this->usuario_id = $usuario_id;
         $this->transmision = $transmision;
+        self::$contador++;
     }
+    public static function getContador() {
+        return self::$contador;
+
+    
+}
 }

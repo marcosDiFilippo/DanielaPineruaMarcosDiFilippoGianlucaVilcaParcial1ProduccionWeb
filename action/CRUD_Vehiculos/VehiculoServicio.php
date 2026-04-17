@@ -2,7 +2,7 @@
     require_once('../../src/clases/Vehiculo.php');
     require_once('../../exceptions/VehiculoException.php');
 
-    class VehiculoServicio {
+    class VehiculoServicio implements Gestionable {
         private Vehiculo $vehiculo;
 
         public function __construct(Vehiculo $vehiculo)
@@ -10,15 +10,15 @@
             $this->vehiculo = $vehiculo;
         }
 
-        public function crearVehiculo () {
+        public function crear () {
 
         }
 
-        public function actualizarVehiculo () {
+        public function actualizar () {
 
         }
 
-        public function eliminarVehiculo () {
+        public function eliminar () {
 
         }
 
