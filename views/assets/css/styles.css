@@ -43,7 +43,7 @@ header-nav a:hover {
 
 /* Footer */
 
-.admin-footer {
+footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -55,7 +55,7 @@ header-nav a:hover {
 }
 
 @media (max-width: 768px) {
-    .admin-footer {
+    footer {
         flex-direction: column;
         align-items: flex-start;
         gap: 8px;

@@ -1,3 +1,3 @@
-<footer class="admin-footer">
-  <p>© 2026 Panel de administración</p>
+<footer>
+  <p>© 2026 Daniela Piñerua, Marcos Di Filippo, Gianluca Vilca</p>
 </footer>
