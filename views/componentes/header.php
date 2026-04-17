@@ -4,7 +4,7 @@
   </div>
   <nav class="admin-header-nav">
     <a href="../dashboard.php">Inicio</a>
-    <a href="../usuarios.php">Usuarios</a>
+    <a href="../gestion_usuarios.php">Usuarios</a>
     <a href="../vehiculos.php">Vehiculos</a>
     <a href="../../action/sesion/logout.php">Cerrar sesión</a>
   </nav>
