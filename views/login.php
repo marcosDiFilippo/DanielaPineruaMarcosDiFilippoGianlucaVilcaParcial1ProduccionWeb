@@ -11,8 +11,11 @@
     <?php
     include_once('componentes/header.php');    ?>
     <main>
-        <section>
+        <?php if (isset($_GET['error'])): ?>
+             <p>Email o contraseña incorrectos</p>
+        <?php endif; ?>
 
+        <section>
             <h1>Iniciar Sesion</h1>
 
             <form method="POST" action="../action/sesion/procesar_login.php">

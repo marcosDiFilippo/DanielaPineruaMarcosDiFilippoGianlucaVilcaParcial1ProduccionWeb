@@ -22,5 +22,7 @@
         exit;
 
     } else {
-        echo "Email o contraseña incorrectos";
+       header("Location: ../../views/login.php?error=1");
+       exit;
+
     }
