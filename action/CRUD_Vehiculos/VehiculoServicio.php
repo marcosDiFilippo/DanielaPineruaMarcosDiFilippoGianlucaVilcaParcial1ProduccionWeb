@@ -132,27 +132,32 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
 $action = $_GET["action"] ?? '';
 
 try {
-
-    // ===== SUBIR IMAGEN (ANTES DE VALIDAR) =====
+    // ===== SUBIR IMAGEN =====
     $nombreImagen = $_FILES['imagen']['name'] ?? '';
     $tmp = $_FILES['imagen']['tmp_name'] ?? '';
-
+    // SI SUBE NUEVA IMAGEN
     if ($nombreImagen && $tmp) {
         $nombreFinal = time() . "_" . $nombreImagen;
         move_uploaded_file($tmp, "../../imagenes/" . $nombreFinal);
         $_POST['imagen'] = $nombreFinal;
-    }
-    // Si NO sube nueva imagen, mantener la anterior
-    if (empty($_FILES['imagen']['name'])) {
-    $_POST['imagen'] = $_POST['imagen_actual'] ?? '';
-    }
+        // borrar imagen vieja
+        if (!empty($_POST['imagen_actual'])) {
+            $ruta = "../../imagenes/" . $_POST['imagen_actual'];
+            if (file_exists($ruta)) {
+                unlink($ruta);
+            }
+        }
+    } else {
+        // SI NO SUBE NUEVA → mantener la actual
+        $_POST['imagen'] = $_POST['imagen_actual'] ?? '';
 
+    }
     $vehiculoValidado = VehiculoServicio::validarDatosVehiculo($_POST);
     $vehiculoServicio = new VehiculoServicio($vehiculoValidado);
-
 } catch (Exception $e) {
     header('Location: ../../views/vehiculos.php?error=' . $e->getMessage());
     exit;
+
 }
 
 switch ($action) {
