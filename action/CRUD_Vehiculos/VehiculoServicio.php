@@ -64,6 +64,15 @@
                 $stmt->execute([':id' => $id]);
 
         }
+        
+        public static function contarVehiculos() {
+    $conexion = BD::getInstancia();
+    $sql = "SELECT COUNT(*) as total FROM vehiculos";
+    $stmt = $conexion->query($sql);
+    $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $resultado['total'];
+}
+
 
         /**
          * @throws VehiculoException

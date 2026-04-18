@@ -80,14 +80,9 @@ class Vehiculo {
         return $this->transmision;
 
     }
+
+
     
-    public static function getContador() {
-        return self::$contador;
-
-}
-
-
-
 
     
 }
