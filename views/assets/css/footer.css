@@ -1,0 +1,30 @@
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 24px;
+    background: #071b3f;
+    color: rgba(216, 230, 255, 0.55);
+    border-top: 2px solid #b8922a;
+    font-size: 13px;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+footer p {
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    footer {
+        padding: 14px 16px;
+        font-size: 11px;
+        letter-spacing: 1px;
+        text-align: center;
+    }
+}

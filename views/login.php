@@ -4,18 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="stylesheet" href="assets/css/login.css">
 
-    <link rel="stylesheet" href="assets/css/styles.css">
 </head>
+
 <body>
     <?php
     include_once('componentes/header.php');    ?>
     <main>
-        <?php if (isset($_GET['error'])): ?>
-             <p>Email o contraseña incorrectos</p>
-        <?php endif; ?>
-
         <section>
+            
+            <?php if (isset($_GET['error'])): ?>
+                <p>Email o contraseña incorrectos</p>
+            <?php endif; ?>
+
             <h1>Iniciar Sesion</h1>
 
             <form method="POST" action="../action/sesion/procesar_login.php">

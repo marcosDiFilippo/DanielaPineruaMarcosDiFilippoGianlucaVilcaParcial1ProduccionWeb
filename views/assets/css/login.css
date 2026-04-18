@@ -1,0 +1,141 @@
+body {
+    padding-top: 70px;
+    padding-bottom: 60px;
+}
+
+
+main {
+    min-height: calc(100vh - 130px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #050f22;
+    background-image:
+        radial-gradient(ellipse at 20% 50%, rgba(184, 146, 42, 0.06) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 50%, rgba(7, 27, 63, 0.8) 0%, transparent 60%);
+    padding: 40px 20px;
+}
+
+main > p {
+    display: none;
+}
+
+section {
+    background: #071b3f;
+    border: 1px solid rgba(184, 146, 42, 0.25);
+    border-top: 3px solid #b8922a;
+    border-radius: 4px;
+    padding: 48px 44px;
+    width: 100%;
+    max-width: 420px;
+    animation: fadeUp 0.4s ease;
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+section h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+    text-align: center;
+}
+
+section h1::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 2px;
+    background: #b8922a;
+    margin: 12px auto 32px;
+}
+
+main:has(p) section {
+    border-top-color: #c0392b;
+}
+
+.error-msg {
+    background: rgba(192, 57, 43, 0.1);
+    border: 1px solid rgba(192, 57, 43, 0.3);
+    border-radius: 4px;
+    color: #e74c3c;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    padding: 10px 14px;
+    margin-bottom: 24px;
+    text-align: center;
+    letter-spacing: 0.5px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+form input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(184, 146, 42, 0.2);
+    border-radius: 4px;
+    padding: 13px 16px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #d8e6ff;
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+    letter-spacing: 0.3px;
+}
+
+form input::placeholder {
+    color: rgba(216, 230, 255, 0.3);
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+form input:focus {
+    border-color: #b8922a;
+    background: rgba(184, 146, 42, 0.05);
+}
+
+form button {
+    margin-top: 8px;
+    width: 100%;
+    padding: 14px;
+    background: #b8922a;
+    border: none;
+    border-radius: 4px;
+    color: #050f22;
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+}
+
+form button:hover {
+    background: #d4a93a;
+}
+
+form button:active {
+    transform: scale(0.98);
+}
+
+
+@media (max-width: 480px) {
+    section {
+        padding: 36px 24px;
+    }
+
+    section h1 {
+        font-size: 1.3rem;
+    }
+}
