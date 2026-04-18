@@ -8,7 +8,7 @@
                 <p>Email o contraseña incorrectos</p>
             <?php endif; ?>
 
-            <h1>Iniciar Sesion</h1>
+            <h2>Iniciar Sesion</h2>
 
             <form method="POST" action="../action/sesion/procesar_login.php">
                 <input type="email" name="email" placeholder="Email" required>
