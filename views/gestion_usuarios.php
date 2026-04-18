@@ -1,23 +1,6 @@
-<?php
-    session_start();
-
-    if (!isset($_SESSION['usuario_id']) || $_SESSION['rol'] !== 'admin') {
-        echo "No tenés permisos";
-        exit;
-    }
-?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestion de Usuarios</title>
-
-</head>
-<body>
     <?php
         include_once('componentes/header.php');
+        include_once('componentes/session.php');
     ?>
     <main>
         <section>
@@ -83,5 +66,3 @@
     <?php
         include_once('componentes/footer.php');
     ?>
-</body>
-</html>
