@@ -1,6 +1,6 @@
 <?php
 interface Gestionable {
     public function crear();
-    public function actualizar();
-    public function eliminar();
+    public function actualizar($id);
+    public function eliminar($id);
 }

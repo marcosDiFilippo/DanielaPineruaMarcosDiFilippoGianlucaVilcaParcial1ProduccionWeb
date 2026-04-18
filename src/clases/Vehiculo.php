@@ -34,9 +34,61 @@ class Vehiculo {
         $this->transmision = $transmision;
         self::$contador++;
     }
+
+       public function getMarca() {
+        return $this->marca;
+
+    }
+
+    public function getModelo() {
+        return $this->modelo;
+
+    }
+
+    public function getAnio() {
+         return $this->anio;
+
+    }
+
+    public function getPrecio() {
+        return $this->precio;
+
+    }
+
+    public function getTipo() {
+        return $this->tipo;
+
+    }
+
+    public function getColor() {
+
+        return $this->color;
+
+    }
+
+    public function getImagen() {
+         return $this->imagen;
+
+    }
+
+    public function getUsuarioId() {
+         return $this->usuario_id;
+
+    }
+
+    public function getTransmision() {
+        return $this->transmision;
+
+    }
+    
     public static function getContador() {
         return self::$contador;
 
+}
+
+
+
+
     
 }
-}
+

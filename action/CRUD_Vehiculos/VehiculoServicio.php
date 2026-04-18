@@ -1,6 +1,7 @@
 <?php
     require_once('../../src/clases/Vehiculo.php');
     require_once('../../exceptions/VehiculoException.php');
+    require_once('../../src/interfaces/Gestionable.php');
 
     class VehiculoServicio implements Gestionable {
         private Vehiculo $vehiculo;
@@ -9,16 +10,58 @@
         {
             $this->vehiculo = $vehiculo;
         }
-
+        
         public function crear () {
+             $conexion = BD::getInstancia();
+    $sql = "INSERT INTO vehiculos 
+    (marca, modelo, anio, precio, tipo, color, imagen, usuario_id, transmision) 
+    VALUES (:marca, :modelo, :anio, :precio, :tipo, :color, :imagen, :usuario_id, :transmision)";
 
+    $stmt = $conexion->prepare($sql);
+
+    $stmt->execute([
+        ':marca' => $this->vehiculo->getMarca(),
+        ':modelo' => $this->vehiculo->getModelo(),
+        ':anio' => $this->vehiculo->getAnio(),
+        ':precio' => $this->vehiculo->getPrecio(),
+        ':tipo' => $this->vehiculo->getTipo(),
+        ':color' => $this->vehiculo->getColor(),
+        ':imagen' => $this->vehiculo->getImagen(),
+        ':usuario_id' => $this->vehiculo->getUsuarioId(),
+        ':transmision' => $this->vehiculo->getTransmision()
+    ]);
         }
 
-        public function actualizar () {
+        public function actualizar ($id) {
+             $conexion = BD::getInstancia();
+             $sql = "UPDATE vehiculos SET 
+             marca = :marca,
+             modelo = :modelo,
+             anio = :anio,
+             precio = :precio,
+             tipo = :tipo,
+             color = :color,
+             imagen = :imagen,
+             transmision = :transmision
+             WHERE id = :id";
+             $stmt = $conexion->prepare($sql);
+             $stmt->execute([
+                ':marca' => $this->vehiculo->getMarca(),
+                ':modelo' => $this->vehiculo->getModelo(),
+                ':anio' => $this->vehiculo->getAnio(),
+                ':precio' => $this->vehiculo->getPrecio(),
+                ':tipo' => $this->vehiculo->getTipo(),
+                ':color' => $this->vehiculo->getColor(),
+                ':imagen' => $this->vehiculo->getImagen(),
+                ':transmision' => $this->vehiculo->getTransmision(),
+                ':id' => $id]);
+                 }
 
-        }
-
-        public function eliminar () {
+        public function eliminar ($id) {
+                $conexion = BD::getInstancia();
+                $sql = "DELETE FROM vehiculos WHERE id = :id";
+                $stmt = $conexion->prepare($sql);
+                $stmt->execute([':id' => $id]);
 
         }
 
@@ -120,13 +163,18 @@
 
     //en cada case luego llamamos al vehiculoServicio->el metodo para (crear, eliminar o actualizar)
     switch ($action) {
-        case "crear":
-            
-            break;
-        case "eliminar":
-            
-            break;
-        case "actualizar":
-            
-            break;
-    }
+    case "crear":
+        $vehiculoServicio->crear();
+        break;
+
+    case "actualizar":
+        $vehiculoServicio->actualizar($_POST['id']);
+        break;
+
+    case "eliminar":
+        $vehiculoServicio->eliminar($_POST['id']);
+        break;
+}
+
+    header('Location: ../../views/vehiculos.php?ok=1');
+    exit;
