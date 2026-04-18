@@ -8,7 +8,7 @@
 
             <h3>Ingresa los vehiculos que deseas agregar</h3>
             
-    <form action="../src/procesos/procesarVehiculo.php?action=crear" method="POST" enctype="multipart/form-data">
+    <form action="../action/CRUD_Vehiculos/VehiculoServicio.php?action=crear" method="POST" enctype="multipart/form-data">
     <input type="text" name="marca" placeholder="Marca" required>
     <input type="text" name="modelo" placeholder="Modelo" required>
     <input type="number" name="anio" placeholder="Año" required>
@@ -22,7 +22,7 @@
 </form>
 
 <?php
-require_once('../src/servicios/VehiculoServicio.php');
+require_once('../action/CRUD_Vehiculos/VehiculoServicio.php');
 $vehiculos = VehiculoServicio::obtenerVehiculos();
 ?>
 
