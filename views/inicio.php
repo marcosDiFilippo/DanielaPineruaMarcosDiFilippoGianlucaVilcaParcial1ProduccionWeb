@@ -1,14 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio</title>
-
-</head>
-<body>
     <?php
-    include_once('componentes/header.php');    ?>
+        include_once('componentes/header.php');    
+    ?>
     <main>
         <section>
             <h2>La mejor agencia de vehículos</h2>
@@ -20,5 +12,3 @@
     <?php
         include_once('componentes/footer.php');
     ?>
-</body>
-</html>

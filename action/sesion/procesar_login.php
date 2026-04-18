@@ -22,7 +22,7 @@
         exit;
 
     } else {
-       header("Location: ../../views/login.php?error=1");
-       exit;
+        header("Location: ../../views/login.php?error=1");
+        exit;
 
     }

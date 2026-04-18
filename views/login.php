@@ -1,16 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="assets/css/login.css">
-
-</head>
-
-<body>
     <?php
-    include_once('componentes/header.php');    ?>
+        include_once('componentes/header.php');    
+    ?>
     <main>
         <section>
             
@@ -30,5 +20,3 @@
     <?php
         include_once('componentes/footer.php');
     ?>
-</body>
-</html>
