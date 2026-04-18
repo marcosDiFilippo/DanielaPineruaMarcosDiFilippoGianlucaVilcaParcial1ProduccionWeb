@@ -148,9 +148,8 @@ try {
             }
         }
     } else {
-        // SI NO SUBE NUEVA → mantener la actual
+        // SI NO SUBE NUEVA IMAGEN, MANTENER LA ACTUAL
         $_POST['imagen'] = $_POST['imagen_actual'] ?? '';
-
     }
     $vehiculoValidado = VehiculoServicio::validarDatosVehiculo($_POST);
     $vehiculoServicio = new VehiculoServicio($vehiculoValidado);
