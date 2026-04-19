@@ -22,7 +22,7 @@ $vehiculo = $stmt->fetch(PDO::FETCH_ASSOC);
         <input type="hidden" name="id" value="<?php echo $vehiculo['id']; ?>">
         <!-- IMAGEN ACTUAL -->
         <p>Imagen actual:</p>
-        <img src="../imagenes/<?php echo $vehiculo['imagen']; ?>" width="150">
+        <img src="../imagenes/<?php echo $vehiculo['imagen'] . ".webp"; ?>" width="150">
         <!-- GUARDAR IMAGEN ACTUAL -->
         <input type="hidden" name="imagen_actual" value="<?php echo $vehiculo['imagen']; ?>">
         <br><br>

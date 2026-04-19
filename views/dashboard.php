@@ -59,7 +59,7 @@
             </a>
 
             <!-- ELIMINAR -->
-            <form action="../src/procesos/procesarVehiculo.php?action=eliminar" method="POST" style="display:inline;">
+            <form action="../action/CRUD_Vehiculos/VehiculoServicio.php?action=eliminar" method="POST" style="display:inline;">
                 <input type="hidden" name="id" value="<?php echo $v['id']; ?>">
                 <button type="submit" onclick="return confirm('¿Seguro que querés eliminar?')">
                     Eliminar
