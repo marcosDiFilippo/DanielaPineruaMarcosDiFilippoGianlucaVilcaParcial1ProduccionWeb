@@ -24,15 +24,15 @@ class Vehiculo {
         int $usuario_id,
         string $transmision
     ) {
-        $this->setMarca($marca);
-        $this->setModelo($modelo);
-        $this->setAnio($anio);
-        $this->setPrecio($precio);
-        $this->setTipo($tipo);
-        $this->setColor($color);
-        $this->setImagen($imagen);
-        $this->setUsuarioId($usuario_id);
-        $this->setTransmision($transmision);
+        $this->marca = $marca;
+        $this->modelo = $modelo;
+        $this->anio = $anio;
+        $this->precio = $precio;
+        $this->tipo = $tipo;
+        $this->color = $color;
+        $this->imagen = $imagen;
+        $this->usuario_id = $usuario_id;
+        $this->transmision = $transmision;
     }
 
        public function getMarca() {

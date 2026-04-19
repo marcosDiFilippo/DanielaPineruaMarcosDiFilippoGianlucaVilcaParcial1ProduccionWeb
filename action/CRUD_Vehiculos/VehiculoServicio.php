@@ -177,8 +177,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // SI NO SUBE NUEVA IMAGEN, MANTENER LA ACTUAL
             $datosVehiculo["imagen"] = $_POST['imagen_actual'] ?? '';
         }
-        $vehiculoValidado = VehiculoServicio::validarDatosVehiculo($datosVehiculo);
-        $vehiculoServicio = new VehiculoServicio($vehiculoValidado);
+
+        // Validar datos solo para crear y actualizar
+        if ($action == "crear" || $action == "actualizar") {
+            $vehiculoValidado = VehiculoServicio::validarDatosVehiculo($datosVehiculo);
+            $vehiculoServicio = new VehiculoServicio($vehiculoValidado);
+        }
     } catch (Exception $e) {
         header('Location: ../../views/dashboard.php?error=' . $e->getMessage());
         exit;
@@ -196,8 +200,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             break;
 
         case "eliminar":
-
-        // buscar imagen
+            // Para eliminar, solo necesitamos el ID, no validar datos
+            $vehiculoServicio = new VehiculoServicio(new Vehiculo('', '', 0, 0.0, '', '', '', 0, ''));
         $conexion = BD::getInstancia();
         $stmt = $conexion->prepare("SELECT imagen FROM vehiculos WHERE id = :id");
         $stmt->execute([':id' => $_POST['id']]);

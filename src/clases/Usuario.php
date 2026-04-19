@@ -11,10 +11,10 @@ class Usuario {
 
     public function __construct(?int $id, string $nombre, string $email, string $password, string $rol) {
         $this->id = $id;
-        $this->setNombre($nombre);
-        $this->setEmail($email);
-        $this->setPassword($password);
-        $this->setRol($rol);
+        $this->nombre = $nombre;
+        $this->email = $email;
+        $this->password = $password;
+        $this->rol = $rol;
     }
 
     public function getId() {

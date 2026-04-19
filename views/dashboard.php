@@ -11,7 +11,7 @@
 
             <h3>Ingresa los vehiculos que deseas agregar</h3>
             <?php if (isset($_GET['ok'])): ?>
-                <p class="exito">Vehículo creado correctamente</p>
+                <p class="exito">Operacion realizada con éxito</p>
                 <?php endif; ?>
                 <?php if (isset($_GET['error'])): ?>
                     <p class="error">
