@@ -31,7 +31,7 @@ if (!$usuario) {
     exit;
 }
 ?>
-
+<link rel="stylesheet" href="assets/css/editar_usuario.css">
 <main>
 <section>
     <h2>Editar usuario</h2>
@@ -44,8 +44,11 @@ if (!$usuario) {
         <option value="empleado" <?php echo ($usuario['rol'] == 'empleado') ? 'selected' : ''; ?>>Empleado</option>
         <option value="admin" <?php echo ($usuario['rol'] == 'admin') ? 'selected' : ''; ?>>Administrador</option>
     </select>
-
-    <button type="submit">Actualizar usuario</button>
+    
+    <div class="form-acciones">
+        <a href="gestion_usuarios.php" class="btn-cancelar">Cancelar</a>
+        <button type="submit">Actualizar usuario</button>
+    </div>
 </form>
 </section>
 </main>

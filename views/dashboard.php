@@ -37,19 +37,21 @@
     $vehiculos = VehiculoServicio::obtenerVehiculos();
 ?>
 
-<table border="1">
-    <tr>
-        <th>Imagen</th>
-        <th>Marca</th>
-        <th>Modelo</th>
-        <th>Año</th>
-        <th>Precio</th>
-        <th>Tipo</th>
-        <th>Color</th>
-        <th>Transmisión</th>
-        <th>Usuario</th>
-        <th>Acciones</th>
-    </tr>
+<table>
+    <thead>
+        <tr>
+            <th>Imagen</th>
+            <th>Marca</th>
+            <th>Modelo</th>
+            <th>Año</th>
+            <th>Precio</th>
+            <th>Tipo</th>
+            <th>Color</th>
+            <th>Transmisión</th>
+            <th>Usuario</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
     <?php foreach ($vehiculos as $v): ?>
     <tr>
         <td>

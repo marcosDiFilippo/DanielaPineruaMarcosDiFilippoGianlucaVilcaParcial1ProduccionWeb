@@ -187,16 +187,124 @@ table td span {
     font-style: italic;
 }
 
-@media (max-width: 900px) {
-    form {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    form button[type="submit"] {
-        grid-column: 1 / -1;
-    }
-
+@media (max-width: 600px) {
     main {
-        padding: 1.5rem 1rem;
+        padding: 1rem 0.75rem;
+        margin-top: 32px;
+        gap: 1rem;
+    }
+
+    form {
+        grid-template-columns: 1fr;
+    }
+
+    form button[type="submit"],
+    form input[type="submit"] {
+        grid-column: 1 / -1;
+        padding: 12px;
+    }
+
+    table thead {
+        display: none;
+    }
+
+    table,
+    table tbody {
+        display: block;
+        width: 100%;
+    }
+
+    table tbody {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        padding: 12px;
+    }
+
+    table tr {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 2px 10px;
+        background: #F9FAFB;
+        border: 1px solid #E8ECF4;
+        border-radius: 10px;
+        padding: 12px 14px;
+    }
+
+    table tr:hover td {
+        background: none;
+    }
+
+    table td:nth-child(1) {
+        grid-column: 1 / -1;
+        font-size: 10px;
+        font-weight: 700;
+        color: #9CA3AF;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        padding: 0 0 6px;
+        border: none;
+        border-bottom: 1px solid #F3F4F6;
+    }
+
+    table td:nth-child(2) {
+        font-size: 14px;
+        font-weight: 600;
+        color: #111827;
+        padding: 4px 0 0;
+        border: none;
+        align-self: center;
+    }
+
+    table td:nth-child(3) {
+        grid-column: 1 / -1;
+        font-size: 12px;
+        color: #6B7280;
+        padding: 2px 0;
+        border: none;
+    }
+
+    table td:nth-child(4) {
+        font-size: 11px;
+        font-weight: 600;
+        color: #6B7280;
+        background: #F3F4F6;
+        border: 1px solid #E5E7EB;
+        border-radius: 20px;
+        padding: 3px 10px;
+        text-align: center;
+        align-self: center;
+        justify-self: end;
+        margin-top: 4px;
+        white-space: nowrap;
+    }
+
+    table td:nth-child(5) {
+        display: none;
+    }
+
+    table td:nth-child(6) {
+        grid-column: 1 / -1;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 0 0;
+        border: none;
+        border-top: 1px solid #F3F4F6;
+        margin-top: 4px;
+        white-space: normal;
+    }
+
+    table td a {
+        margin-right: 0;
+        padding: 5px 14px;
+    }
+
+    table td form {
+        display: block;
+    }
+
+    table td form input[type="submit"] {
+        padding: 5px 14px;
     }
 }

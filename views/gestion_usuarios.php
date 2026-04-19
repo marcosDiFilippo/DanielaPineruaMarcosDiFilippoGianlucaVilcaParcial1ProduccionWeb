@@ -44,15 +44,17 @@
         <section>
             <h2>Lista de usuarios</h2>
 
-            <table border="1">
-                <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Email</th>
-                    <th>Rol</th>
-                    <th>Contraseña</th>
-                    <th>Acciones</th>
-                </tr>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Email</th>
+                        <th>Rol</th>
+                        <th>Contraseña</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
 
                 <?php foreach ($usuarios as $u): ?>
                     <tr>

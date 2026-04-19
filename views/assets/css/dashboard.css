@@ -1,3 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: #F3F4F6;
+    color: #111827;
+}
+
 main {
     max-width: 1100px;
     margin: 66px auto 80px;
@@ -142,6 +156,13 @@ table td img {
     display: block;
 }
 
+table td:last-child {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+}
+
 table td a {
     font-size: 12px;
     font-weight: 600;
@@ -153,7 +174,7 @@ table td a {
     background: #EEF2FF;
     transition: background 0.15s;
     display: inline-block;
-    margin-right: 6px;
+    vertical-align: middle;
 }
 
 table td a:hover {
@@ -161,7 +182,8 @@ table td a:hover {
 }
 
 table td form {
-    display: inline;
+    display: inline-flex;
+    align-items: center;
     background: none;
     border: none;
     padding: 0;
@@ -181,8 +203,6 @@ table td form button {
     cursor: pointer;
     font-family: 'Plus Jakarta Sans', sans-serif;
     transition: background 0.15s;
-    grid-column: unset;
-    justify-self: unset;
 }
 
 table td form button:hover {
@@ -195,7 +215,8 @@ table td form button:hover {
     }
 
     form {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
     }
 
     form button[type="submit"] {
@@ -206,22 +227,157 @@ table td form button:hover {
         font-size: 11px;
     }
 
-    table th, table td {
+    table th,
+    table td {
         padding: 8px 10px;
     }
 }
 
-table td:last-child {
-    white-space: nowrap;
-}
+@media (max-width: 600px) {
+    main {
+        padding: 1rem 0.75rem;
+        margin-top: 32px;
+    }
 
-table td a,
-table td form button {
-    display: inline-block;
-    vertical-align: middle;
-}
+    main section h2 {
+        font-size: 1.2rem;
+    }
 
-table td form {
-    display: inline-block;
-    vertical-align: middle;
+    form {
+        grid-template-columns: 1fr;
+        padding: 16px;
+        gap: 10px;
+        margin-bottom: 1.2rem;
+    }
+
+    form button[type="submit"] {
+        justify-self: stretch;
+        padding: 12px;
+    }
+
+    table thead {
+        display: none;
+    }
+
+    table,
+    table tbody {
+        display: block;
+        width: 100%;
+        background: none;
+        border: none;
+        border-radius: 0;
+        overflow: visible;
+    }
+
+    table tbody {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 0;
+        margin-top: 1rem;
+    }
+
+    table tr {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-template-rows: auto auto auto auto;
+        gap: 2px 12px;
+        background: #ffffff;
+        border: 1px solid #E8ECF4;
+        border-radius: 12px;
+        padding: 16px;
+    }
+
+    table tr:hover td {
+        background: none;
+    }
+
+    table td:nth-child(1) {
+        grid-column: 1;
+        grid-row: 1 / 5;
+        border: none;
+        padding: 0;
+        align-self: center;
+    }
+
+    table td:nth-child(1) img {
+        width: 80px;
+        height: 54px;
+        border-radius: 8px;
+        object-fit: cover;
+    }
+
+    table td:nth-child(2) {
+        grid-column: 2;
+        grid-row: 1;
+        font-size: 14px;
+        font-weight: 700;
+        color: #111827;
+        border: none;
+        padding: 0;
+        align-self: end;
+    }
+
+    table td:nth-child(3) {
+        grid-column: 2;
+        grid-row: 2;
+        font-size: 12px;
+        color: #6B7280;
+        border: none;
+        padding: 0;
+    }
+
+    table td:nth-child(4) {
+        grid-column: 2;
+        grid-row: 3;
+        font-size: 11px;
+        color: #9CA3AF;
+        border: none;
+        padding: 0;
+    }
+
+    /* Precio */
+    table td:nth-child(5) {
+        grid-column: 2;
+        grid-row: 4;
+        font-size: 13px;
+        font-weight: 700;
+        color: #4F46E5;
+        border: none;
+        padding: 0;
+    }
+
+    table td:nth-child(6),
+    table td:nth-child(7),
+    table td:nth-child(8),
+    table td:nth-child(9) {
+        display: none;
+    }
+
+    /* Acciones */
+    table td:nth-child(10) {
+        grid-column: 1 / -1;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 10px 0 0;
+        border: none;
+        border-top: 1px solid #F3F4F6;
+        margin-top: 6px;
+        white-space: normal;
+    }
+
+    table td a {
+        padding: 6px 16px;
+        font-size: 12px;
+    }
+
+    table td form {
+        display: block;
+    }
+
+    table td form button {
+        padding: 6px 16px;
+        font-size: 12px;
+    }
 }
