@@ -1,81 +1,72 @@
 <?php
+    session_start();
+
+
     require_once('../../src/clases/BD.php');
     require_once('../../src/clases/Usuario.php');
+    require_once('../../src/clases/Administrador.php');
     require_once('../../src/interfaces/Gestionable.php');
     require_once('../../exceptions/UsuarioException.php');
 
     class UsuarioServicio implements Gestionable {
 
         private Usuario $usuario;
+        private Administrador $administrador;
 
         public function __construct(Usuario $usuario)
         {
             $this->usuario = $usuario;
+            $this->administrador = new Administrador($_SESSION["usuario_id"], $_SESSION["nombre"], '', '', $_SESSION["rol"]);
         }
         public function crear()
         {
-            $conexion = BD::getInstancia();
-            $sql = "INSERT INTO usuarios (nombre, email, password, rol) VALUES (:nombre, :email, :password, :rol)";
-            $stmt = $conexion->prepare($sql);
-            $stmt->execute([
-                ':nombre' => $this->usuario->getNombre(),
-                ':email' => $this->usuario->getEmail(),
-                ':password' => md5($this->usuario->getPassword()),
-                ':rol' => $this->usuario->getRol()
-            ]);
+            $this->administrador->crear($this->usuario);
         }
         
         public function actualizar($id){
-    self::validarIdUsuario($id);
-    $conexion = BD::getInstancia();
-    $sql = "UPDATE usuarios SET 
-        nombre = :nombre, 
-        email = :email, 
-        rol = :rol 
-        WHERE id = :id";
-    $stmt = $conexion->prepare($sql);
-    $stmt->execute([
-        ':nombre' => $this->usuario->getNombre(),
-        ':email' => $this->usuario->getEmail(),
-        ':rol' => $this->usuario->getRol(),
-        ':id' => (int)$id
-    ]);
-}
+            self::validarIdUsuario($id);
+
+            $this->administrador->actualizar($this->usuario);
+        }
 
         public function eliminar($id)
         {
             self::validarIdUsuario($id);
 
-            $conexion = BD::getInstancia();
-            $sql = "DELETE FROM usuarios WHERE id = :id";
-            $stmt = $conexion->prepare($sql);
-            $stmt->execute([':id' => (int)$id]);
+            $this->administrador->eliminar($id);
         }
 
         private static function existeEmail($email, $id = null){
             $conexion = BD::getInstancia();
+
             if ($id) {
-        // Para editar (excluir el mismo usuario)
-        $sql = "SELECT id FROM usuarios WHERE email = :email AND id != :id";
-        $stmt = $conexion->prepare($sql);
-        $stmt->execute([
-            ':email' => $email,
-            ':id' => $id
-            ]);
+                // Para editar (excluir el mismo usuario)
+
+                $sql = "SELECT id FROM usuarios WHERE email = :email AND id != :id";
+
+                $stmt = $conexion->prepare($sql);
+
+                $stmt->execute([
+                    ':email' => $email,
+                    ':id' => $id
+                ]);
             } else {
                 // Para crear
                 $sql = "SELECT id FROM usuarios WHERE email = :email";
+
                 $stmt = $conexion->prepare($sql);
+
                 $stmt->execute([':email' => $email]);
-                }
-                return $stmt->fetch() ? true : false;
-                }
+            }
+            return $stmt->fetch() ? true : false;
+        }
         public static function validarDatosUsuario (array $datosUsuario) {
             
             if (empty($datosUsuario)) {
                 throw new Exception('No se recibieron datos del usuario.');
             }
 
+            $id = $datosUsuario["id"] ?? null;
             $nombre = trim($datosUsuario['nombre'] ?? '');
             $email = trim($datosUsuario['email'] ?? '');
             $password = trim($datosUsuario['password'] ?? '');
@@ -111,10 +102,10 @@
 
             // Validar email duplicado
             if (self::existeEmail($email, $datosUsuario['id'] ?? null)) {
-                 throw new UsuarioException('El email ya está registrado.');
-                 }
+                throw new UsuarioException('El email ya está registrado.');
+            }
 
-            return new Usuario(null, $nombre, $email, $password, $rol);
+            return new Usuario($id, $nombre, $email, $password, $rol);
         }
 
         public static function validarIdUsuario ($id) {
@@ -125,6 +116,12 @@
     }
 
     /* PROCESO */
+    
+    if (isset($_SESSION) && $_SESSION["rol"] != 'admin') {
+        header('Location: ../../views/gestion_usuarios.php?error=Action no especificada');
+        exit;
+    }
+
     $action = $_GET["action"] ?? '';
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -151,14 +148,16 @@
 
                 $usuarioServicio->crear();
             }
-           elseif ($action == "actualizar") {
+            elseif ($action == "actualizar") {
             // eliminamos password
-            unset($datosUsuario['password']);
+                unset($datosUsuario['password']);
+                
+                $datosUsuario['id'] = $_POST['id'];
+
+                $usuarioValidado = UsuarioServicio::validarDatosUsuario($datosUsuario);
+                $usuarioServicio = new UsuarioServicio($usuarioValidado);
+                $usuarioServicio->actualizar($_POST['id']);
             
-            $datosUsuario['id'] = $_POST['id'];
-            $usuarioValidado = UsuarioServicio::validarDatosUsuario($datosUsuario);
-            $usuarioServicio = new UsuarioServicio($usuarioValidado);
-            $usuarioServicio->actualizar($_POST['id']);
             }
             elseif ($action == "eliminar") {
 

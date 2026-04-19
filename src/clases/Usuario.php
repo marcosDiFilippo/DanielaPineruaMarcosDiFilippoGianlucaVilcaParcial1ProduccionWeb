@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/../../exceptions/UsuarioException.php';
+require_once '../../exceptions/UsuarioException.php';
 
 class Usuario {
     private ?int $id;
@@ -9,7 +9,7 @@ class Usuario {
     private string $password;
     private string $rol;
 
-    public function __construct(?int $id, string $nombre, string $email, string $password, string $rol) {
+    public function __construct(?int $id, string $nombre, string $email, string $password = '', string $rol = 'usuario') {
         $this->id = $id;
         $this->nombre = $nombre;
         $this->email = $email;
