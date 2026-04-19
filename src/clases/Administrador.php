@@ -45,8 +45,5 @@ class Administrador extends Usuario {
         $stmt->execute([':id' => (int)$id]);
     }
 
-    //metodo que no se cuando se usa
-    public function gestionarUsuarios() {
-        return "El administrador puede gestionar usuarios";
-    }
+    
 }
