@@ -146,6 +146,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try {
         $datosVehiculo = $_POST;
 
+        // Si es actualización, mantener el usuario_id actual de la BD
+        if ($action == "actualizar") {
+            $conexion = BD::getInstancia();
+            $stmt = $conexion->prepare("SELECT usuario_id FROM vehiculos WHERE id = :id");
+            $stmt->execute([':id' => $_POST['id']]);
+            $vehiculoActual = $stmt->fetch(PDO::FETCH_ASSOC);
+            $datosVehiculo['usuario_id'] = $vehiculoActual['usuario_id'];
+        }
+
         // ===== SUBIR IMAGEN =====
         $nombreImagen = $_FILES['imagen']['name'] ?? '';
         $tmp = $_FILES['imagen']['tmp_name'] ?? '';
@@ -166,7 +175,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         } else {
             // SI NO SUBE NUEVA IMAGEN, MANTENER LA ACTUAL
-            $_POST['imagen'] = $_POST['imagen_actual'] ?? '';
+            $datosVehiculo["imagen"] = $_POST['imagen_actual'] ?? '';
         }
         $vehiculoValidado = VehiculoServicio::validarDatosVehiculo($datosVehiculo);
         $vehiculoServicio = new VehiculoServicio($vehiculoValidado);
