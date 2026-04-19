@@ -16,14 +16,14 @@
     <input type="text" name="tipo" placeholder="Tipo" required>
     <input type="text" name="color" placeholder="Color" required>
     <input type="text" name="transmision" placeholder="Transmisión" required>
-    <input type="hidden" name="usuario_id" value="<?php echo $_SESSION['id']; ?>">
+    <input type="hidden" name="usuario_id" value="<?php echo $_SESSION['usuario_id']; ?>">
     <input type="file" name="imagen" required>
     <button type="submit">Guardar vehículo</button>
 </form>
 
 <?php
-require_once('../action/CRUD_Vehiculos/VehiculoServicio.php');
-$vehiculos = VehiculoServicio::obtenerVehiculos();
+    include_once('../action/CRUD_Vehiculos/VehiculoServicio.php');
+    $vehiculos = VehiculoServicio::obtenerVehiculos();
 ?>
 
 <table border="1">

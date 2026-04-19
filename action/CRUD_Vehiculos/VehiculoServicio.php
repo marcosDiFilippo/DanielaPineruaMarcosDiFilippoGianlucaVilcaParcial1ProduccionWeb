@@ -1,9 +1,18 @@
 <?php
-require_once('../../src/clases/Vehiculo.php');
-require_once('../../exceptions/VehiculoException.php');
-require_once('../../src/interfaces/Gestionable.php');
+    if (str_contains($_SERVER['PHP_SELF'], 'VehiculoServicio.php')) {
+        $paths = [
+            "Vehiculo" => '../../src/clases/Vehiculo.php',
+            "VehiculoException" => '../../exceptions/VehiculoException.php',
+            "Gestionable" => '../../src/interfaces/Gestionable.php',
+            "BD" => '../../src/clases/BD.php'
+        ];
+    }
+    require_once($paths["Vehiculo"] ?? '../src/clases/Vehiculo.php');
+    require_once($paths["VehiculoException"] ?? '../exceptions/VehiculoException.php');
+    require_once($paths["Gestionable"] ?? '../src/interfaces/Gestionable.php');
+    require_once($paths["BD"] ?? '../src/clases/BD.php');
 
-class VehiculoServicio implements Gestionable {
+    class VehiculoServicio implements Gestionable {
     private Vehiculo $vehiculo;
 
     public function __construct(Vehiculo $vehiculo)
@@ -79,8 +88,11 @@ class VehiculoServicio implements Gestionable {
 
     public static function obtenerVehiculos() {
         $conexion = BD::getInstancia();
-        $sql = "SELECT * FROM vehiculos";
-        $stmt = $conexion->query($sql);
+
+        $stmt = $conexion->prepare("SELECT * FROM vehiculos");
+
+        $stmt->execute();
+
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
@@ -89,13 +101,16 @@ class VehiculoServicio implements Gestionable {
             throw new VehiculoException('No se recibieron datos del vehículo.');
         }
 
+        echo json_encode($datosVehiculo);
+        echo json_encode('llego aca la img => ' . $datosVehiculo["imagen"]);
+
         $marca = trim($datosVehiculo['marca'] ?? '');
         $modelo = trim($datosVehiculo['modelo'] ?? '');
         $anio = trim($datosVehiculo['anio'] ?? '');
         $precio = trim($datosVehiculo['precio'] ?? '');
         $tipo = trim($datosVehiculo['tipo'] ?? '');
         $color = trim($datosVehiculo['color'] ?? '');
-        $imagen = trim($datosVehiculo['imagen'] ?? '');
+        $imagen = $datosVehiculo['imagen'] ?? '';
         $usuario_id = trim($datosVehiculo['usuario_id'] ?? '');
         $transmision = trim($datosVehiculo['transmision'] ?? '');
 
@@ -125,64 +140,68 @@ class VehiculoServicio implements Gestionable {
 
 /* ================== PROCESO ================== */
 
-if ($_SERVER["REQUEST_METHOD"] != "POST") {
-    exit;
-}
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $action = $_GET["action"] ?? '';
 
-$action = $_GET["action"] ?? '';
+    try {
+        $datosVehiculo = $_POST;
 
-try {
-    // ===== SUBIR IMAGEN =====
-    $nombreImagen = $_FILES['imagen']['name'] ?? '';
-    $tmp = $_FILES['imagen']['tmp_name'] ?? '';
-    // SI SUBE NUEVA IMAGEN
-    if ($nombreImagen && $tmp) {
-        $nombreFinal = time() . "_" . $nombreImagen;
-        move_uploaded_file($tmp, "../../imagenes/" . $nombreFinal);
-        $_POST['imagen'] = $nombreFinal;
-        // borrar imagen vieja
-        if (!empty($_POST['imagen_actual'])) {
-            $ruta = "../../imagenes/" . $_POST['imagen_actual'];
-            if (file_exists($ruta)) {
-                unlink($ruta);
+        // ===== SUBIR IMAGEN =====
+        $nombreImagen = $_FILES['imagen']['name'] ?? '';
+        $tmp = $_FILES['imagen']['tmp_name'] ?? '';
+        // SI SUBE NUEVA IMAGEN
+        if ($nombreImagen && $tmp) {
+
+            $nombreFinal = time();
+            
+            move_uploaded_file($tmp, "../../imagenes/" . $nombreFinal . ".webp");
+            
+            $datosVehiculo["imagen"] = $nombreFinal;
+            // borrar imagen vieja
+            if (!empty($_POST['imagen_actual'])) {
+                $ruta = "../../imagenes/" . $_POST['imagen_actual'];
+                if (file_exists($ruta)) {
+                    unlink($ruta);
+                }
             }
+        } else {
+            // SI NO SUBE NUEVA IMAGEN, MANTENER LA ACTUAL
+            $_POST['imagen'] = $_POST['imagen_actual'] ?? '';
         }
-    } else {
-        // SI NO SUBE NUEVA IMAGEN, MANTENER LA ACTUAL
-        $_POST['imagen'] = $_POST['imagen_actual'] ?? '';
+        $vehiculoValidado = VehiculoServicio::validarDatosVehiculo($datosVehiculo);
+        $vehiculoServicio = new VehiculoServicio($vehiculoValidado);
+    } catch (Exception $e) {
+        header('Location: ../../views/vehiculos.php?error=' . $e->getMessage());
+        exit;
+
     }
-    $vehiculoValidado = VehiculoServicio::validarDatosVehiculo($_POST);
-    $vehiculoServicio = new VehiculoServicio($vehiculoValidado);
-} catch (Exception $e) {
-    header('Location: ../../views/vehiculos.php?error=' . $e->getMessage());
+
+    switch ($action) {
+
+        case "crear":
+            $vehiculoServicio->crear();
+            break;
+
+        case "actualizar":
+            $vehiculoServicio->actualizar($_POST['id']);
+            break;
+
+        case "eliminar":
+
+        // buscar imagen
+        $conexion = BD::getInstancia();
+        $stmt = $conexion->prepare("SELECT imagen FROM vehiculos WHERE id = :id");
+        $stmt->execute([':id' => $_POST['id']]);
+        $vehiculo = $stmt->fetch(PDO::FETCH_ASSOC);
+        // borrar archivo
+        if ($vehiculo && file_exists("../../imagenes/" . $vehiculo['imagen'])) {
+            unlink("../../imagenes/" . $vehiculo['imagen']);
+        }
+        
+        $vehiculoServicio->eliminar($_POST['id']);
+        break;
+    }
+
+    header('Location: ../../views/vehiculos.php?ok=1');
     exit;
-
 }
-
-switch ($action) {
-
-    case "crear":
-        $vehiculoServicio->crear();
-        break;
-
-    case "actualizar":
-        $vehiculoServicio->actualizar($_POST['id']);
-        break;
-
-    case "eliminar":
-
-    // buscar imagen
-    $conexion = BD::getInstancia();
-    $stmt = $conexion->prepare("SELECT imagen FROM vehiculos WHERE id = :id");
-    $stmt->execute([':id' => $_POST['id']]);
-    $vehiculo = $stmt->fetch(PDO::FETCH_ASSOC);
-    // borrar archivo
-    if ($vehiculo && file_exists("../../imagenes/" . $vehiculo['imagen'])) {
-        unlink("../../imagenes/" . $vehiculo['imagen']);
-    }
-    $vehiculoServicio->eliminar($_POST['id']);
-    break;
-}
-
-header('Location: ../../views/vehiculos.php?ok=1');
-exit;
