@@ -27,6 +27,10 @@ class Usuario {
         return $this->email;
     }
 
+    public function getPassword() {
+        return $this->password;
+    }
+
     public function getRol() {
         return $this->rol;
     }
