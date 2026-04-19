@@ -1,0 +1,202 @@
+main {
+    max-width: 1100px;
+    margin: 66px auto 80px;
+    padding: 2rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+main section:first-of-type {
+    background: #ffffff;
+    border-radius: 14px;
+    border: 1px solid #E8ECF4;
+    border-top: 3px solid #4F46E5;
+    padding: 24px;
+}
+
+main section h2 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 16px;
+}
+
+form {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr auto auto;
+    gap: 10px;
+    align-items: end;
+}
+
+form input,
+form select {
+    background: #F9FAFB;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 13px;
+    color: #111827;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    width: 100%;
+}
+
+form input:focus,
+form select:focus {
+    border-color: #4F46E5;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+    background: #ffffff;
+}
+
+form input::placeholder {
+    color: #9CA3AF;
+    font-size: 12px;
+}
+
+form input[type="hidden"] {
+    display: none;
+}
+
+form button[type="submit"],
+form input[type="submit"] {
+    background: linear-gradient(135deg, #4F46E5, #7C3AED);
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 22px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: opacity 0.2s;
+}
+
+form button[type="submit"]:hover,
+form input[type="submit"]:hover {
+    opacity: 0.88;
+}
+
+main section:last-of-type {
+    background: #ffffff;
+    border-radius: 14px;
+    border: 1px solid #E8ECF4;
+    overflow: hidden;
+    padding: 0;
+}
+
+main section:last-of-type h2 {
+    font-size: 14px;
+    font-weight: 700;
+    color: #111827;
+    padding: 14px 20px;
+    border-bottom: 1px solid #F3F4F6;
+    margin: 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+table th {
+    background: #F9FAFB;
+    color: #6B7280;
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 10px 16px;
+    text-align: left;
+    border-bottom: 1px solid #F3F4F6;
+}
+
+table td {
+    padding: 10px 16px;
+    color: #374151;
+    border-bottom: 1px solid #F9FAFB;
+    vertical-align: middle;
+}
+
+table tr:last-child td {
+    border-bottom: none;
+}
+
+table tr:hover td {
+    background: #FAFBFF;
+}
+
+table td:last-child {
+    white-space: nowrap;
+}
+
+table td a {
+    font-size: 12px;
+    font-weight: 600;
+    color: #4F46E5;
+    text-decoration: none;
+    padding: 4px 10px;
+    border-radius: 6px;
+    border: 1px solid #C7D2FE;
+    background: #EEF2FF;
+    transition: background 0.15s;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 4px;
+}
+
+table td a:hover {
+    background: #E0E7FF;
+}
+
+table td form {
+    display: inline-block;
+    vertical-align: middle;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    grid-template-columns: unset;
+    gap: 0;
+}
+
+table td form input[type="submit"] {
+    font-size: 12px;
+    font-weight: 600;
+    color: #DC2626;
+    background: #FEF2F2;
+    border: 1px solid #FECACA;
+    padding: 4px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    transition: background 0.15s;
+    width: auto;
+}
+
+table td form input[type="submit"]:hover {
+    background: #FEE2E2;
+}
+
+table td span {
+    font-size: 11px;
+    color: #9CA3AF;
+    font-style: italic;
+}
+
+@media (max-width: 900px) {
+    form {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    form button[type="submit"] {
+        grid-column: 1 / -1;
+    }
+
+    main {
+        padding: 1.5rem 1rem;
+    }
+}

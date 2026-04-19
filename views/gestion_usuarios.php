@@ -2,6 +2,7 @@
         include_once('componentes/header.php');
         include_once('componentes/session.php');
     ?>
+    <link rel="stylesheet" href="assets/css/gestion_usuarios.css">
     <main>
         <section>
             <h2>Crear usuario</h2>

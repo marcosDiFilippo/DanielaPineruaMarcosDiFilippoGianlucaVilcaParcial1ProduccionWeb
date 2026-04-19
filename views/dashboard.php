@@ -2,6 +2,8 @@
         include_once('componentes/header.php');
         include_once('componentes/session.php');
     ?>
+    <link rel="stylesheet" href="assets/css/dashboard.css">
+
     <main>
         <section>
             <h2>Bienvenido <?php echo $_SESSION['nombre']; ?></h2>

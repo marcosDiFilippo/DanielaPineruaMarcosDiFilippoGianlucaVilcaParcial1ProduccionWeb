@@ -1,0 +1,227 @@
+main {
+    max-width: 1100px;
+    margin: 66px auto 80px;
+    padding: 2rem 2.5rem;
+}
+
+main section h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #111827;
+    letter-spacing: -0.3px;
+    margin-bottom: 2px;
+}
+
+main section h3 {
+    font-size: 13px;
+    font-weight: 400;
+    color: #9CA3AF;
+    margin-bottom: 1.8rem;
+}
+
+form {
+    background: #ffffff;
+    border-radius: 14px;
+    border: 1px solid #E8ECF4;
+    border-top: 3px solid #4F46E5;
+    padding: 24px;
+    margin-bottom: 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+form input[type="text"],
+form input[type="number"] {
+    background: #F9FAFB;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 13px;
+    color: #111827;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    width: 100%;
+}
+
+form input[type="text"]:focus,
+form input[type="number"]:focus {
+    border-color: #4F46E5;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+    background: #ffffff;
+}
+
+form input::placeholder {
+    color: #9CA3AF;
+    font-size: 12px;
+}
+
+form input[type="hidden"] {
+    display: none;
+}
+
+form input[type="file"] {
+    grid-column: 1 / -1;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 12px;
+    color: #6B7280;
+    background: #F9FAFB;
+    border: 1px dashed #E5E7EB;
+    border-radius: 8px;
+    padding: 10px 14px;
+    cursor: pointer;
+}
+
+form button[type="submit"] {
+    grid-column: 1 / -1;
+    justify-self: end;
+    background: linear-gradient(135deg, #4F46E5, #7C3AED);
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 28px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.1s;
+}
+
+form button[type="submit"]:hover {
+    opacity: 0.88;
+}
+
+form button[type="submit"]:active {
+    transform: scale(0.98);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    border-radius: 14px;
+    border: 1px solid #E8ECF4;
+    overflow: hidden;
+    font-size: 13px;
+}
+
+table th {
+    background: #F9FAFB;
+    color: #6B7280;
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid #F3F4F6;
+}
+
+table td {
+    padding: 12px 16px;
+    color: #374151;
+    border-bottom: 1px solid #F9FAFB;
+    vertical-align: middle;
+}
+
+table tr:last-child td {
+    border-bottom: none;
+}
+
+table tr:hover td {
+    background: #FAFBFF;
+}
+
+table td img {
+    width: 70px;
+    height: 46px;
+    object-fit: cover;
+    border-radius: 8px;
+    background: #EEF2FF;
+    display: block;
+}
+
+table td a {
+    font-size: 12px;
+    font-weight: 600;
+    color: #4F46E5;
+    text-decoration: none;
+    padding: 5px 12px;
+    border-radius: 6px;
+    border: 1px solid #C7D2FE;
+    background: #EEF2FF;
+    transition: background 0.15s;
+    display: inline-block;
+    margin-right: 6px;
+}
+
+table td a:hover {
+    background: #E0E7FF;
+}
+
+table td form {
+    display: inline;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    grid-template-columns: unset;
+    gap: 0;
+}
+
+table td form button {
+    font-size: 12px;
+    font-weight: 600;
+    color: #DC2626;
+    background: #FEF2F2;
+    border: 1px solid #FECACA;
+    padding: 5px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    transition: background 0.15s;
+    grid-column: unset;
+    justify-self: unset;
+}
+
+table td form button:hover {
+    background: #FEE2E2;
+}
+
+@media (max-width: 768px) {
+    main {
+        padding: 1.5rem 1rem;
+    }
+
+    form {
+        grid-template-columns: 1fr;
+    }
+
+    form button[type="submit"] {
+        justify-self: stretch;
+    }
+
+    table {
+        font-size: 11px;
+    }
+
+    table th, table td {
+        padding: 8px 10px;
+    }
+}
+
+table td:last-child {
+    white-space: nowrap;
+}
+
+table td a,
+table td form button {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+table td form {
+    display: inline-block;
+    vertical-align: middle;
+}

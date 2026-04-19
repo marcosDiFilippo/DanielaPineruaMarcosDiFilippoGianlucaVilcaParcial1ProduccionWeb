@@ -1,6 +1,7 @@
     <?php
         include_once('componentes/header.php');    
     ?>
+    <link rel="stylesheet" href="assets/css/inicio.css">
     <main>
         <section>
             <h2>La mejor agencia de vehículos</h2>
