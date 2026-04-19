@@ -5,7 +5,7 @@ require_once('../src/clases/BD.php');
 
 // Validar admin
 if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'admin') {
-    header('Location: index.php');
+    header('Location: ../index.php');
     exit;
 }
 echo "<h1>Editar Usuario</h1>";
