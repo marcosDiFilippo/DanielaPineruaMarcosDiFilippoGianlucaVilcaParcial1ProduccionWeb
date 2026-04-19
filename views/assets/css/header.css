@@ -32,17 +32,6 @@ header div {
     gap: 10px;
 }
 
-header div .logo-badge {
-    width: 34px;
-    height: 34px;
-    border-radius: 10px;
-    background: linear-gradient(135deg, #4F46E5, #7C3AED);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-}
-
 header div h1 {
     font-size: 1.1rem;
     font-weight: 700;
@@ -64,7 +53,7 @@ header nav a {
     text-decoration: none;
     padding: 7px 13px;
     border-radius: 8px;
-    transition: color 0.15s ease, background 0.15s ease;
+    transition: color 0.15s, background 0.15s;
 }
 
 header nav a:hover {
@@ -76,33 +65,86 @@ header nav a[href*="logout"] {
     background: #4F46E5;
     color: #ffffff;
     margin-left: 8px;
-    border-radius: 8px;
 }
 
 header nav a[href*="logout"]:hover {
     background: #4338CA;
 }
 
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+    background: none;
+    border: none;
+}
+
+.nav-toggle span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: #111827;
+    border-radius: 2px;
+    transition: all 0.2s;
+}
+
 @media (max-width: 768px) {
     header {
-        flex-direction: column;
+        flex-wrap: wrap;
         height: auto;
         padding: 14px 20px;
-        gap: 12px;
-        align-items: flex-start;
+        gap: 0;
+    }
+
+    .nav-toggle {
+        display: flex;
     }
 
     header nav {
-        flex-wrap: wrap;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
         gap: 4px;
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease, padding 0.3s ease;
+        padding: 0;
+    }
+
+    header nav.open {
+        max-height: 400px;
+        padding: 12px 0 4px;
     }
 
     header nav a {
-        font-size: 12px;
-        padding: 6px 10px;
+        font-size: 14px;
+        padding: 10px 14px;
+        border-radius: 8px;
+        width: 100%;
     }
 
-    header div h1 {
-        font-size: 1rem;
+    header nav a[href*="logout"] {
+        margin-left: 0;
+        margin-top: 4px;
+        text-align: center;
     }
+}
+
+.nav-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 99;
+    backdrop-filter: blur(2px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.nav-overlay.open {
+    display: block;
+    opacity: 1;
 }
