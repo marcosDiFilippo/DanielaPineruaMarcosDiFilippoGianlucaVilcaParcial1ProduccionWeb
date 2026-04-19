@@ -1,6 +1,8 @@
     <?php
         include_once('componentes/header.php');
         include_once('componentes/session.php');
+        //metodo que hay que escirbir
+        // !-- <h3><?php echo $empleado->mostrarPerfil(); 
     ?>
     <link rel="stylesheet" href="assets/css/dashboard.css">
     <link rel="stylesheet" href="assets/css/styles.css">
@@ -8,8 +10,6 @@
     <main>
         <section>
             <h2>Bienvenido <?php echo $_SESSION['nombre']; ?></h2>
-            <p><?php echo $empleado->mostrarPerfil(); ?></p>
-
             <h3>Ingresa los vehiculos que deseas agregar</h3>
             <?php if (isset($_GET['ok'])): ?>
                 <p class="exito">Operacion realizada con éxito</p>
