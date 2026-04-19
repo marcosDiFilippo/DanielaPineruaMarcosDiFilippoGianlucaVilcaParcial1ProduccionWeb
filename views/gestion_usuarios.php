@@ -9,14 +9,15 @@
     exit;
     }
 ?>
-    <?php if (isset($_GET['ok'])): ?>
-        <p style="color: green;">Operación realizada con éxito</p>
+    <link rel="stylesheet" href="assets/css/gestion_usuarios.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <main>
+        <?php if (isset($_GET['ok'])): ?>
+        <p class="exito">Operación realizada con éxito</p>
         <?php endif; ?>
         <?php if (isset($_GET['error'])): ?>
-    <p><?php echo htmlspecialchars($_GET['error']); ?></p>
+    <p class="error"><?php echo htmlspecialchars($_GET['error']); ?></p>
 <?php endif; ?>
-    <link rel="stylesheet" href="assets/css/gestion_usuarios.css">
-    <main>
         <section>
             <h2>Crear usuario</h2>
 

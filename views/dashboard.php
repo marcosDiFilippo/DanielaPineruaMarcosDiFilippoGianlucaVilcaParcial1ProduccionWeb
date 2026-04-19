@@ -3,12 +3,21 @@
         include_once('componentes/session.php');
     ?>
     <link rel="stylesheet" href="assets/css/dashboard.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
 
     <main>
         <section>
             <h2>Bienvenido <?php echo $_SESSION['nombre']; ?></h2>
 
             <h3>Ingresa los vehiculos que deseas agregar</h3>
+            <?php if (isset($_GET['ok'])): ?>
+                <p class="exito">Vehículo creado correctamente</p>
+                <?php endif; ?>
+                <?php if (isset($_GET['error'])): ?>
+                    <p class="error">
+                        <?php echo htmlspecialchars($_GET['error']); ?>
+                    </p>
+                    <?php endif; ?>
             
     <form action="../action/CRUD_Vehiculos/VehiculoServicio.php?action=crear" method="POST" enctype="multipart/form-data">
     <input type="text" name="marca" placeholder="Marca" required>

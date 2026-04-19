@@ -171,7 +171,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $vehiculoValidado = VehiculoServicio::validarDatosVehiculo($datosVehiculo);
         $vehiculoServicio = new VehiculoServicio($vehiculoValidado);
     } catch (Exception $e) {
-        header('Location: ../../views/vehiculos.php?error=' . $e->getMessage());
+        header('Location: ../../views/dashboard.php?error=' . $e->getMessage());
         exit;
 
     }
@@ -202,6 +202,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         break;
     }
 
-    header('Location: ../../views/vehiculos.php?ok=1');
+    header('Location: ../../views/dashboard.php?ok=1');
     exit;
 }
