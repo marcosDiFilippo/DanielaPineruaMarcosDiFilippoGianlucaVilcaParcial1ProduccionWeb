@@ -6,7 +6,7 @@
         <section>
             <h2>Crear usuario</h2>
 
-            <form method="POST" action="../action/CRUD_Usuarios/guardar_usuario.php">
+            <form method="POST" action="../action/CRUD_Usuarios/UsuarioServicio.php?action=crear">
                 <input type="text" name="nombre" placeholder="Nombre" required>
                 <input type="email" name="email" placeholder="Email" required>
                 <input type="password" name="password" placeholder="Contraseña" required>
@@ -46,14 +46,16 @@
                         <td><?php echo $u['rol']; ?></td>
 
                         <td>
-                            <a href="../action/CRUD_Usuarios/editar_usuario.php?id=<?php echo $u['id']; ?>">Editar</a>
+                            <a href="editar_usuario.php?id=<?php echo $u['id']; ?>">Editar</a>
                             |
 
                             <?php if ($u['id'] != $_SESSION['usuario_id']): ?>
-                                <a href="../action/CRUD_Usuarios/eliminar_usuario.php?id=<?php echo $u['id']; ?>"
-                                    onclick="return confirm('¿Seguro que querés eliminar este usuario?');">
-                                    Eliminar
-                                </a>
+                                <form action="../action/CRUD_Usuarios/UsuarioServicio.php?action=eliminar"
+                                    onsubmit="return confirm('¿Seguro que querés eliminar este usuario?');" method="post">
+                                    <input type="hidden" name="id" value="<?php echo $u['id']; ?>">
+                                    <input type="hidden" name="action" value="eliminar">
+                                    <input type="submit" value="Eliminar">
+                                </form>
                             <?php else: ?>
                                 (Tu usuario)
                             <?php endif; ?>
