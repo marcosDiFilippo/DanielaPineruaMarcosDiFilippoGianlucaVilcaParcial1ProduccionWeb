@@ -19,7 +19,7 @@
 
 <main>
     <div class="migas">
-        <a href="index.php">Inicio</a>
+        <a href="inicio.php">Inicio</a>
         <span>›</span>
         <a href="vehiculos.php">Vehículos</a>
         <span>›</span>
