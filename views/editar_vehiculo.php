@@ -13,7 +13,7 @@ $stmt->execute([':id' => $id]);
 
 $vehiculo = $stmt->fetch(PDO::FETCH_ASSOC);
 ?>
-
+<link rel="stylesheet" href="assets/css/editar_vehiculo.css">
 <main>
 <section>
     <h2>Editar vehículo</h2>
@@ -23,7 +23,7 @@ $vehiculo = $stmt->fetch(PDO::FETCH_ASSOC);
         <input type="hidden" name="id" value="<?php echo $vehiculo['id']; ?>">
         <!-- IMAGEN ACTUAL -->
         <p>Imagen actual:</p>
-        <img src="../imagenes/<?php echo $vehiculo['imagen'] . ".webp"; ?>" width="150">
+        <img src="../imagenes/<?php echo $vehiculo['imagen'] . ".webp"; ?>" width="300">
         <!-- GUARDAR IMAGEN ACTUAL -->
         <input type="hidden" name="imagen_actual" value="<?php echo $vehiculo['imagen']; ?>">
         <br><br>
@@ -39,7 +39,10 @@ $vehiculo = $stmt->fetch(PDO::FETCH_ASSOC);
         <input type="text" name="transmision" value="<?php echo $vehiculo['transmision']; ?>" required>
         <!-- usuario oculto -->
         <input type="hidden" name="usuario_id" value="<?php echo $_SESSION['id']; ?>">
-        <button type="submit">Actualizar vehículo</button>
+        <div class="form-acciones">
+        <a href="dashboard.php" class="btn-cancelar">Cancelar</a>
+        <button type="submit">Actualizar Vehiculo</button>
+    </div>
     </form>
 </section>
 </main>

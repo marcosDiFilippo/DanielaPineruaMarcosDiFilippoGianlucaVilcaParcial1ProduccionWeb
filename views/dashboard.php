@@ -1,6 +1,7 @@
     <?php
         include_once('componentes/header.php');
         include_once('componentes/session.php');
+        
         //metodo que hay que escirbir
         // !-- <h3><?php echo $empleado->mostrarPerfil(); 
     ?>
