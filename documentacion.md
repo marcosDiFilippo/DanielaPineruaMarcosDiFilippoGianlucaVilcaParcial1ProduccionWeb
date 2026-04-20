@@ -508,3 +508,8 @@ Contiene los archivos de estilos del sistema. Cada archivo está enfocado en una
 | `perfil.css`             | Estilos de la vista de perfil de usuario.            |
 | `styles.css`             | Estilos generales reutilizables en todo el sistema.  |
 | `vehiculos.css`          | Estilos del listado de vehículos.                    |
+
+
+# Carpeta `imagenes`
+
+Contiene las fotos en formato .webp de los vehiculos cargados en el sistema.
