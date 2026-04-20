@@ -1,6 +1,11 @@
 <?php
 
-require_once '../../exceptions/UsuarioException.php';
+if (str_contains($_SERVER["PHP_SELF"], 'perfil')) {
+    require_once('../exceptions/UsuarioException.php');
+}
+else {
+    require_once '../../exceptions/UsuarioException.php';
+}
 
 class Usuario {
     private ?int $id;

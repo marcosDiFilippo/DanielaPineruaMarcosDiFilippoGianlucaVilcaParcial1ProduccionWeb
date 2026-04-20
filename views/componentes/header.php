@@ -35,6 +35,8 @@
 
           <?php if ($_SESSION['rol'] === 'admin'): ?>
               <a href="./gestion_usuarios.php">Usuarios</a>
+          <?php else: ?>
+              <a href="./perfil.php">Ver Perfil</a>
           <?php endif; ?>
 
           <a href="../action/sesion/logout.php">Cerrar sesión</a>
