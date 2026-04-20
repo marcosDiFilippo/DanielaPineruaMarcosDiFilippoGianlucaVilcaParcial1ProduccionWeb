@@ -49,6 +49,9 @@ Autentica al usuario con email y contraseña contra la base de datos.
 
 # Base de datos - `agencia`
 
+Dentro de la carpeta bd se encuentra el archivo:
+* agencia.sql: contiene la estructura completa de la base de datos del sistema, incluyendo la creación de tablas (usuarios, vehículos, etc.), relaciones y datos iniciales.
+
 ## Tabla `usuarios`
 
 Almacena los usuarios del sistema con su rol de acceso.
@@ -484,3 +487,24 @@ Componente de protección de rutas. Se incluye al inicio de las vistas que requi
 - Si no hay sesión, redirige al usuario a `login.php` y detiene la ejecución.
 
 > Debe incluirse después de `header.php` (que ya ejecuta `session_start()`) o asegurarse de que la sesión esté iniciada antes de llamarlo.
+
+# Carpeta `assets/css`
+
+Contiene los archivos de estilos del sistema. Cada archivo está enfocado en una sección específica para mantener una mejor organización y modularidad del diseño.
+
+## Archivos incluidos
+
+| Archivo                  | Descripción                                          |
+|--------------------------|------------------------------------------------------|
+| `dashboard.css`          | Estilos del panel de administración.                 |
+| `detalle_vehiculo.css`   | Estilos de la vista de detalle de cada vehículo.     |
+| `editar_usuario.css`     | Estilos del formulario de edición de usuarios.       |
+| `editar_vehiculo.css`    | Estilos del formulario de edición de vehículos.      |
+| `footer.css`             | Estilos del pie de página.                           |
+| `gestion_usuarios.css`   | Estilos de la gestión de usuarios.                   |
+| `header.css`             | Estilos del encabezado y navegación.                 |
+| `inicio.css`             | Estilos de la página principal.                      |
+| `login.css`              | Estilos del formulario de inicio de sesión.          |
+| `perfil.css`             | Estilos de la vista de perfil de usuario.            |
+| `styles.css`             | Estilos generales reutilizables en todo el sistema.  |
+| `vehiculos.css`          | Estilos del listado de vehículos.                    |
