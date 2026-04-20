@@ -8,11 +8,11 @@ else {
 }
 
 class Usuario {
-    private ?int $id;
-    private string $nombre;
-    private string $email;
-    private string $password;
-    private string $rol;
+    protected ?int $id;
+    protected string $nombre;
+    protected string $email;
+    protected string $password;
+    protected string $rol;
 
     public function __construct(?int $id, string $nombre, string $email, string $password = '', string $rol = 'usuario') {
         $this->id = $id;
