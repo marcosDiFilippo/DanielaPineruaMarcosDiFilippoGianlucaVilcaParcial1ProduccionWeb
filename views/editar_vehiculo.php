@@ -38,7 +38,7 @@ $vehiculo = $stmt->fetch(PDO::FETCH_ASSOC);
         <input type="text" name="color" value="<?php echo $vehiculo['color']; ?>" required>
         <input type="text" name="transmision" value="<?php echo $vehiculo['transmision']; ?>" required>
         <!-- usuario oculto -->
-        <input type="hidden" name="usuario_id" value="<?php echo $_SESSION['id']; ?>">
+        <input type="hidden" name="usuario_id" value="<?php echo $_SESSION['usuario_id']; ?>">
         <div class="form-acciones">
         <a href="dashboard.php" class="btn-cancelar">Cancelar</a>
         <button type="submit">Actualizar Vehiculo</button>
