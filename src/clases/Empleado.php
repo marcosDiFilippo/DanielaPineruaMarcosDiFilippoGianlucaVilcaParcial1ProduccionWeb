@@ -8,7 +8,19 @@ class Empleado extends Usuario {
         parent::__construct($id, $nombre, $email, $password, $rol);
     }
 
-    public function mostrarPerfil(): string {
-        return "Empleado: " . $this->getNombre() . " - Email: " . $this->getEmail() . "<br>Gracias por ser parte de nuestro equipo.";
+    public function obtenerVehiculosSubidos () {
+        $conexion = BD::getInstancia();
+
+        $sql = "SELECT * FROM vehiculos WHERE usuario_id = :usuario_id";
+
+        $stmt = $conexion->prepare($sql);
+
+        $stmt->execute([
+            ":usuario_id" => $this->getId()
+        ]);
+
+        $vehiculosSubidos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $vehiculosSubidos;
     }
 }
