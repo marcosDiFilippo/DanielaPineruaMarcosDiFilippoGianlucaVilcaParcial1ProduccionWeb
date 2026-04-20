@@ -10,7 +10,9 @@
 
         <div class="hero-btns">
             <a href="vehiculos.php" class="btn-primary">Ver vehículos</a>
+            <?php if (!isset($_SESSION["usuario_id"])): ?>
             <a href="login.php" class="btn-secondary">Iniciar sesión</a>
+            <?php endif ?>
         </div>
 
         <div class="hero-stats">
