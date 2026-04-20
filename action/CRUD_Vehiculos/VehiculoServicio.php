@@ -101,9 +101,6 @@
             throw new VehiculoException('No se recibieron datos del vehículo.');
         }
 
-        echo json_encode($datosVehiculo);
-        echo json_encode('llego aca la img => ' . $datosVehiculo["imagen"]);
-
         $marca = trim($datosVehiculo['marca'] ?? '');
         $modelo = trim($datosVehiculo['modelo'] ?? '');
         $anio = trim($datosVehiculo['anio'] ?? '');
