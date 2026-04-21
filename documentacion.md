@@ -1,4 +1,7 @@
-<video src="presentacion_completa.mp4"></video>
+<video width="600" controls>
+  <source src="presentacion_completa.mp4" type="video/mp4">
+  Tu navegador no soporta el video.
+</video>
 
 # Autenticación
 
