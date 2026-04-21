@@ -180,59 +180,55 @@ main section p {
     to   { opacity: 1; transform: translateY(0); }
 }
 
-
-.destacados-wrapper {
-    position: relative;
-    z-index: 2;
-    background: #1a1f35;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    overflow: hidden;
-}
-
-.destacados-wrapper::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-        radial-gradient(ellipse 60% 80% at 0% 50%, rgba(124, 58, 237, 0.2) 0%, transparent 60%),
-        radial-gradient(ellipse 50% 60% at 100% 50%, rgba(56, 189, 248, 0.1) 0%, transparent 55%);
-    animation: shiftGlow 8s ease-in-out infinite alternate;
-    pointer-events: none;
-}
-
-.destacados-wrapper::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image:
-        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-    background-size: 40px 40px;
-    pointer-events: none;
-}
-
 @keyframes shiftGlow {
     0%   { opacity: 0.7; transform: scale(1) translateX(0); }
     100% { opacity: 1;   transform: scale(1.1) translateX(3%); }
 }
 
-.destacados-section {
+
+.como-wrapper {
+    position: relative;
+    z-index: 2;
+    background: #0d1629;
+    overflow: hidden;
+}
+
+.como-wrapper::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 70% 60% at 50% 0%, rgba(56, 189, 248, 0.09) 0%, transparent 65%);
+    pointer-events: none;
+}
+
+.como-wrapper::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.4), transparent);
+}
+
+.como-section {
     max-width: 1100px;
     width: 100%;
     margin: 0 auto;
-    padding: 5rem 2.5rem !important;
+    padding: 6rem 2.5rem !important;
     position: relative;
     z-index: 1;
-    animation: fadeUp 0.6s ease 0.5s both;
 }
 
-.destacados-header {
+css.como-header {
     text-align: center;
-    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.destacados-eyebrow {
+.section-eyebrow {
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -245,49 +241,174 @@ main section p {
     color: #a5b4fc;
     letter-spacing: 1px;
     text-transform: uppercase;
-    margin-bottom: 1rem;
+    margin-bottom: 1.25rem;
 }
 
-.destacados-header h3 {
-    font-size: clamp(1.6rem, 4vw, 2.4rem);
+.section-title {
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
     font-weight: 800;
     color: #ffffff;
     letter-spacing: -1px;
-    margin: 0 0 0.5rem;
+    margin: 0 0 0.6rem;
+    line-height: 1.15;
 }
 
-.destacados-sub {
-    font-size: 0.95rem;
+.section-sub {
+    font-size: 1rem;
     color: rgba(200, 210, 240, 0.5);
     margin: 0;
 }
 
+.como-grid {
+    display: flex;
+    align-items: stretch;
+    gap: 1.5rem;
+}
+
+.paso-card {
+    flex: 1;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 20px;
+    transition: background 0.2s, border-color 0.2s, transform 0.2s;
+    position: relative;
+    overflow: hidden;
+}
+
+.paso-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #6366f1, #c084fc);
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.paso-card:hover::before {
+    opacity: 1;
+}
+
+.paso-card:hover {
+    background: rgba(79, 70, 229, 0.07);
+    border-color: rgba(99, 102, 241, 0.25);
+    transform: translateY(-6px);
+}
+
+.paso-numero {
+    font-size: 3rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #818cf8, #c084fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    margin-bottom: 1.25rem;
+    opacity: 0.7;
+}
+
+.paso-card h4 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.6rem;
+}
+
+.paso-card p {
+    font-size: 14px;
+    color: rgba(200, 210, 240, 0.55);
+    line-height: 1.7;
+    margin: 0;
+    max-width: 100%;
+    animation: none;
+}
+
+.paso-divider {
+    width: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: rgba(165, 180, 252, 0.3);
+    font-size: 18px;
+    padding-bottom: 2rem;
+}
+
+.paso-divider::after {
+    content: '→';
+}
+
+
+.destacados-wrapper {
+    position: relative;
+    z-index: 2;
+    background: #060d1a;
+    overflow: hidden;
+}
+
+.destacados-wrapper::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 55% 70% at 5% 50%, rgba(124, 58, 237, 0.18) 0%, transparent 60%),
+        radial-gradient(ellipse 45% 55% at 95% 50%, rgba(56, 189, 248, 0.1) 0%, transparent 55%);
+    animation: shiftGlow 8s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+
+.destacados-wrapper::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+    background-size: 44px 44px;
+    pointer-events: none;
+}
+
+.destacados-section {
+    max-width: 1100px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 6rem 2.5rem !important;
+    position: relative;
+    z-index: 1;
+}
+
+.destacados-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
 .destacados-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-    gap: 1.25rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
 }
 
 .car-card {
     position: relative;
     background: rgba(255, 255, 255, 0.04);
     border: 1px solid rgba(255, 255, 255, 0.09);
-    border-radius: 16px;
+    border-radius: 20px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    transition: transform 0.2s, border-color 0.2s, background 0.2s;
+    transition: transform 0.25s, border-color 0.25s, background 0.25s;
 }
 
 .car-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-6px);
     background: rgba(79, 70, 229, 0.08);
     border-color: rgba(99, 102, 241, 0.4);
 }
 
 .car-image {
     width: 100%;
-    height: 190px;
+    height: 200px;
     object-fit: cover;
     display: block;
     background: rgba(255, 255, 255, 0.05);
@@ -295,10 +416,10 @@ main section p {
 
 .car-rank {
     position: absolute;
-    top: 0.9rem;
-    right: 0.9rem;
-    width: 30px;
-    height: 30px;
+    top: 1rem;
+    right: 1rem;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -306,6 +427,7 @@ main section p {
     font-size: 13px;
     font-weight: 700;
     z-index: 1;
+    backdrop-filter: blur(6px);
 }
 
 .rank-gold   { background: rgba(251, 191, 36, 0.2);  color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.4); }
@@ -313,7 +435,7 @@ main section p {
 .rank-bronze { background: rgba(251, 146, 60, 0.2);  color: #fb923c; border: 1px solid rgba(251, 146, 60, 0.35); }
 
 .car-body {
-    padding: 1.25rem;
+    padding: 1.5rem;
     display: flex;
     flex-direction: column;
     gap: 0.4rem;
@@ -321,7 +443,7 @@ main section p {
 }
 
 .car-body h4 {
-    font-size: 0.95rem;
+    font-size: 1rem;
     font-weight: 700;
     color: #ffffff;
     margin: 0;
@@ -329,10 +451,11 @@ main section p {
 
 .car-origin {
     font-size: 11px;
-    font-weight: 500;
+    font-weight: 600;
     color: #a5b4fc;
-    margin: 0 0 0.4rem;
-    letter-spacing: 0.3px;
+    margin: 0 0 0.5rem;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
 }
 
 .car-desc {
@@ -352,7 +475,7 @@ main section p {
 .tag {
     font-size: 11px;
     font-weight: 500;
-    padding: 3px 10px;
+    padding: 4px 11px;
     border-radius: 100px;
     background: rgba(99, 102, 241, 0.1);
     color: #a5b4fc;
@@ -360,13 +483,267 @@ main section p {
 }
 
 
+.marcas-wrapper {
+    position: relative;
+    z-index: 2;
+    background: #111827;
+    padding: 4rem 0;
+    overflow: hidden;
+}
+
+.marcas-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(165, 180, 252, 0.3), transparent);
+}
+
+.marcas-wrapper::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(165, 180, 252, 0.3), transparent);
+}
+
+.marcas-section {
+    max-width: 1100px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 2.5rem;
+}
+
+.marcas-label {
+    text-align: center;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(165, 180, 252, 0.45);
+    margin-bottom: 2.5rem;
+}
+
+.marcas-track-wrapper {
+    overflow: hidden;
+    mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+}
+
+.marcas-track {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    animation: scrollMarcas 30s linear infinite;
+}
+
+.marcas-track span {
+    font-size: 13px;
+    font-weight: 700;
+    color: rgba(165, 180, 252, 0.5);
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    padding: 0.5rem 2.8rem;
+    border-right: 1px solid rgba(165, 180, 252, 0.12);
+    transition: color 0.2s;
+}
+
+.marcas-track span:hover {
+    color: #a5b4fc;
+}
+
+@keyframes scrollMarcas {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+}
+
+
+.testimonios-wrapper {
+    position: relative;
+    z-index: 2;
+    background: #0a1020;
+    overflow: hidden;
+}
+
+.testimonios-wrapper::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 60% 60% at 95% 10%, rgba(192, 132, 252, 0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 50% at 5% 90%, rgba(99, 102, 241, 0.1) 0%, transparent 55%);
+    animation: shiftGlow 10s ease-in-out infinite alternate-reverse;
+    pointer-events: none;
+}
+
+.testimonios-section {
+    max-width: 1100px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 6rem 2.5rem !important;
+    position: relative;
+    z-index: 1;
+}
+
+.testimonios-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.testimonios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.testimonio-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    transition: transform 0.2s, border-color 0.2s, background 0.2s;
+}
+
+.testimonio-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(192, 132, 252, 0.3);
+    background: rgba(192, 132, 252, 0.04);
+}
+
+.testimonio-estrellas {
+    color: #fbbf24;
+    font-size: 13px;
+    letter-spacing: 3px;
+}
+
+.testimonio-texto {
+    font-size: 14px;
+    color: rgba(200, 210, 240, 0.75);
+    line-height: 1.75;
+    font-style: italic;
+    margin: 0;
+    flex: 1;
+    animation: none;
+    max-width: 100%;
+}
+
+.testimonio-autor {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.autor-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(192, 132, 252, 0.15);
+    border: 1px solid rgba(192, 132, 252, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    color: #c084fc;
+    flex-shrink: 0;
+}
+
+.autor-nombre {
+    font-size: 13px;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0;
+}
+
+.autor-info {
+    font-size: 11px;
+    color: rgba(200, 210, 240, 0.4);
+    margin: 2px 0 0;
+}
+
+
+.cta-section {
+    text-align: center;
+    padding: 8rem 2.5rem !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 350px;
+    background: radial-gradient(ellipse, rgba(99, 102, 241, 0.18) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.cta-eyebrow {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #a5b4fc;
+    margin-bottom: 1.25rem;
+    animation: none;
+    max-width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+.cta-section h3 {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -1.5px;
+    margin-bottom: 1.25rem;
+    line-height: 1.1;
+    position: relative;
+    z-index: 1;
+}
+
+.cta-section p {
+    font-size: 1rem;
+    color: rgba(200, 210, 240, 0.55);
+    margin: 0 auto 3rem;
+    max-width: 440px;
+    animation: none;
+    line-height: 1.7;
+    position: relative;
+    z-index: 1;
+}
+
+.cta-btns {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+}
+
+    
 @media (max-width: 768px) {
     main section {
         padding: 4rem 1.5rem;
     }
 
-    .destacados-section {
-        padding: 3.5rem 1.5rem !important;
+    .como-section,
+    .destacados-section,
+    .testimonios-section {
+        padding: 4rem 1.5rem !important;
+    }
+
+    .cta-section {
+        padding: 5rem 1.5rem !important;
     }
 
     .hero-stats {
@@ -375,7 +752,19 @@ main section p {
     }
 
     .car-image {
-        height: 160px;
+        height: 170px;
+    }
+
+    .como-grid {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .paso-divider {
+        transform: rotate(90deg);
+        width: 32px;
+        height: 24px;
+        padding: 0;
     }
 }
 
@@ -384,15 +773,22 @@ main section p {
         padding: 3rem 1rem;
     }
 
-    .destacados-section {
+    .como-section,
+    .destacados-section,
+    .testimonios-section {
         padding: 3rem 1rem !important;
+    }
+
+    .cta-section {
+        padding: 4rem 1rem !important;
     }
 
     main section h2 {
         letter-spacing: -0.8px;
     }
 
-    .hero-btns {
+    .hero-btns,
+    .cta-btns {
         flex-direction: column;
     }
 
@@ -407,5 +803,10 @@ main section p {
 
     .stat-number {
         font-size: 1.4rem;
+    }
+
+    .cta-glow {
+        width: 300px;
+        height: 200px;
     }
 }
