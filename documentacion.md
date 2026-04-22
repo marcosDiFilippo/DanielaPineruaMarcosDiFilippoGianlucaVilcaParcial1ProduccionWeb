@@ -65,6 +65,8 @@ Autentica al usuario con email y contraseña contra la base de datos.
 
 # Base de datos - `agencia`
 
+<img src="bd/DER.pdf" alt="Diagrama Entidad Relacion"></img>
+
 Dentro de la carpeta bd se encuentra el archivo:
 * agencia.sql: contiene la estructura completa de la base de datos del sistema, incluyendo la creación de tablas (usuarios, vehículos, etc.), relaciones y datos iniciales.
 
