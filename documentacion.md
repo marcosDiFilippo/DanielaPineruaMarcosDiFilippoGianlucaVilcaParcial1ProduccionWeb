@@ -3,7 +3,7 @@
   Tu navegador no soporta el video.
 </video>
 
-[Ver video](https://share.descript.com/view/iqxgZYljbAU)
+[Ver Video de Presentación ](https://share.descript.com/view/iqxgZYljbAU)
 
 # Autenticación
 
