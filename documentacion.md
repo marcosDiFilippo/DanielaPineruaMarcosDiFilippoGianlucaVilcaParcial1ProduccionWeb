@@ -65,6 +65,30 @@ Autentica al usuario con email y contraseña contra la base de datos.
 
 # Base de datos - `agencia`
 
+erDiagram
+    USUARIOS {
+        int id PK
+        varchar nombre
+        varchar email
+        varchar password
+        enum rol
+    }
+
+    VEHICULOS {
+        int id PK
+        varchar marca
+        varchar modelo
+        int anio
+        decimal precio
+        varchar tipo
+        varchar color
+        varchar imagen
+        int usuario_id FK
+        varchar transmision
+    }
+
+    USUARIOS ||--o{ VEHICULOS : "carga"
+
 Dentro de la carpeta bd se encuentra el archivo:
 * agencia.sql: contiene la estructura completa de la base de datos del sistema, incluyendo la creación de tablas (usuarios, vehículos, etc.), relaciones y datos iniciales.
 
